@@ -5,7 +5,7 @@ const errorLogger = (err, req, res, next) => {
   let data = `Date- ${moment().format("MMMM Do YYYY, h:mm:ss a")} Error- ${
     err.stack
   }\n`;
-  fs.appendFile("/errorLogger.txt", data, (error) => {
+  fs.appendFile("/tmp/errorLogger.txt", data, (error) => {
     if (error) {
       console.log("Failed in Logging the error");
     }
