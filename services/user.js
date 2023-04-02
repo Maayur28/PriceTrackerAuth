@@ -303,4 +303,8 @@ userService.removeTracker = async (obj) => {
   return await model.removeTracker(obj);
 };
 
+userService.getUsersList = async () => {
+  return await model.getUsersList();
+};
+
 module.exports = userService;

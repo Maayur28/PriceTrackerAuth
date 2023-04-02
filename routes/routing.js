@@ -190,4 +190,17 @@ routes.put("/deletetracker", authObj.auth, async (req, res, next) => {
   }
 });
 
+routes.get(`/${process.env.USERS_ROUTE}`, async (req, res, next) => {
+  try {
+    if (req.query.key === process.env.KEY) {
+      let data = await service.getUsersList();
+      res.json({ data: data }).status(200);
+    } else {
+      res.json({ message: "Access Denied" }).status(403);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = routes;
