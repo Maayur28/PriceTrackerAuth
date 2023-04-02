@@ -157,4 +157,37 @@ routes.post("/gettracker", authObj.auth, async (req, res, next) => {
   }
 });
 
+routes.put("/updatetracker", authObj.auth, async (req, res, next) => {
+  try {
+    if (req.access) {
+      let userObj = {};
+      userObj.userid = req.userid;
+      userObj.productId = req.body.productId;
+      userObj.alertPrice = req.body.alertPrice;
+      let data = await service.updateTracker(userObj);
+      res.json({ data: data.products }).status(200);
+    } else {
+      res.json({ accessToken: false }).status(400);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
+routes.put("/deletetracker", authObj.auth, async (req, res, next) => {
+  try {
+    if (req.access) {
+      let userObj = {};
+      userObj.userid = req.userid;
+      userObj.productId = req.body.productId;
+      let data = await service.removeTracker(userObj);
+      res.json({ data: data.products }).status(200);
+    } else {
+      res.json({ accessToken: false }).status(400);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = routes;

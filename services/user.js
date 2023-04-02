@@ -295,4 +295,12 @@ userService.getTracker = async (userid) => {
   return await model.getTracker(userid);
 };
 
+userService.updateTracker = async (obj) => {
+  return await model.updateTracker(obj);
+};
+
+userService.removeTracker = async (obj) => {
+  return await model.removeTracker(obj);
+};
+
 module.exports = userService;

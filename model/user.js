@@ -234,8 +234,98 @@ userModel.addTracker = async (userObj) => {
 userModel.getTracker = async (userid) => {
   const model = await dbModel.getUserConnection();
   const data = await model.findOne({ userid: userid }, { products: 1, _id: 0 });
-  console.log(data.products);
   return data;
+};
+
+const checkIfTrackerExists = (productArray, productId) => {
+  let alreadyExists = false;
+  if (
+    productArray != null &&
+    productArray !== undefined &&
+    productArray.size != 0
+  ) {
+    for (let i = 0; i < productArray.length; i++) {
+      let element = productArray[i];
+      if (element.productId === productId) {
+        alreadyExists = true;
+        break;
+      }
+    }
+    return alreadyExists;
+  }
+};
+
+userModel.updateTracker = async (userObj) => {
+  const model = await dbModel.getUserConnection();
+  const verifyUserid = await model.findOne({ userid: userObj.userid });
+  const alreadyExists = checkIfTrackerExists(
+    verifyUserid.products,
+    userObj.productId
+  );
+  if (alreadyExists) {
+    const added = await model.updateOne(
+      {
+        userid: userObj.userid,
+        isVerified: true,
+        "products.productId": userObj.productId,
+      },
+      { $set: { "products.$.alertPrice": userObj.alertPrice } }
+    );
+    if (added.nModified > 0) {
+      return await model.findOne(
+        { userid: userObj.userid },
+        { products: 1, _id: 0 }
+      );
+    } else {
+      let err = new Error();
+      err.status = 500;
+      err.message = "Server is busy!Please try again later";
+      throw err;
+    }
+  } else {
+    let err = new Error();
+    err.status = 404;
+    err.message = "Not Found!!!";
+    throw err;
+  }
+};
+
+userModel.removeTracker = async (userObj) => {
+  const model = await dbModel.getUserConnection();
+  const verifyUserid = await model.findOne({ userid: userObj.userid });
+  const alreadyExists = checkIfTrackerExists(
+    verifyUserid.products,
+    userObj.productId
+  );
+  if (alreadyExists) {
+    const deleted = await model.update(
+      {
+        userid: userObj.userid,
+        isVerified: true,
+      },
+      { $pull: { products: { productId: userObj.productId } } },
+      {
+        upsert: false, // Upsert
+        multi: true, // Multi
+      }
+    );
+    if (deleted.nModified > 0) {
+      return await model.findOne(
+        { userid: userObj.userid },
+        { products: 1, _id: 0 }
+      );
+    } else {
+      let err = new Error();
+      err.status = 500;
+      err.message = "Server is busy!Please try again later";
+      throw err;
+    }
+  } else {
+    let err = new Error();
+    err.status = 404;
+    err.message = "Not Found!!!";
+    throw err;
+  }
 };
 
 module.exports = userModel;
