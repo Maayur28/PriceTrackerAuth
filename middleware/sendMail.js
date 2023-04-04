@@ -114,7 +114,7 @@ sendMailObj.sendLoginMail = async (
               <tbody>
                 <tr>
                   <td style="padding:48px 0 30px 0; text-align: center; font-size: 24px; color: #4C83EE;">
-                    TrackDSA
+                    PriceTracker
                   </td>
                 </tr>
                 <tr>
@@ -133,12 +133,12 @@ sendMailObj.sendLoginMail = async (
                         </tr>
                         <tr>
                           <td style="padding: 0 0 16px 0; font-size: 14px; line-height: 150%; font-weight: 400; color: #000000; letter-spacing: 0.01em;">
-                            We detected a new <b> ${deviceType} </b> login to your TrackDSA account from <b>${clientName} ${clientType}</b>
+                            We detected a new <b> ${deviceType} </b> login to your PriceTracker account from <b>${clientName} ${clientType}</b>
                           </td>
                         </tr>
                         <tr>
                           <td style="padding: 0 0 16px 0; font-size: 14px; line-height: 150%; font-weight: 400; color: #000000; letter-spacing: 0.01em;">
-                            If you didn't make this request we recommend you to change your password and contact <a href="https://www.trackdsa.com/contact" style="border:1px solid transparent; font-size:14px; font-weight:normal; letter-spacing:0px; line-height:normal; padding:12px 0px 12px 0px; text-align:center; text-decoration:none; border-style:solid; font-family:inherit;" target="_blank">TrackDSA Support</a> immediately.
+                            If you didn't make this request we recommend you to <a href="https://www.trackprice.co.in/account" style="border:1px solid transparent; font-size:14px; font-weight:normal; letter-spacing:0px; line-height:normal; padding:12px 0px 12px 0px; text-align:center; text-decoration:none; border-style:solid; font-family:inherit;" target="_blank">change your password</a> and contact <a href="https://www.trackprice.co.in/contact" style="border:1px solid transparent; font-size:14px; font-weight:normal; letter-spacing:0px; line-height:normal; padding:12px 0px 12px 0px; text-align:center; text-decoration:none; border-style:solid; font-family:inherit;" target="_blank">PriceTracker Support</a> immediately.
                           </td>
                         </tr>
                         <tr>
@@ -149,7 +149,7 @@ sendMailObj.sendLoginMail = async (
                         </tr>
                         <tr>
                           <td style="font-size: 14px; line-height: 170%; font-weight: 400; color: #000000; letter-spacing: 0.01em;">
-                            Best regards, <br><strong>TrackDSA</strong>
+                            Best regards, <br><strong>PriceTracker</strong>
                           </td>
                         </tr>
                       </tbody>
@@ -377,7 +377,7 @@ sendMailObj.sendResetMail = async (receiverMail, name, token) => {
         <tbody>
           <tr>
             <td style="font-size:6px; line-height:10px; padding:0px 0px 10px 0px;" valign="top" align="center">
-              <span style="font-size: 24px">TrackDSA</span>
+              <span style="font-size: 24px">PriceTracker</span>
             </td>
           </tr>
         </tbody>
@@ -441,7 +441,7 @@ sendMailObj.sendResetMail = async (receiverMail, name, token) => {
                   <tbody>
                     <tr>
                     <td align="center" bgcolor="#fbca5b" class="inner-td" style="border-radius:6px; font-size:16px; text-align:left; background-color:inherit;">
-                      <a href="https://trackdsa.com/reset/${token}" style="background-color:#fbca5b; border:1px solid #fbca5b; border-color:#fbca5b; border-radius:0px; border-width:1px; color:#000000; display:inline-block; font-size:14px; font-weight:normal; letter-spacing:0px; line-height:normal; padding:12px 50px 12px 50px; text-align:center; text-decoration:none; border-style:solid; font-family:inherit;" target="_blank">Reset Password</a>
+                      <a href="https://www.trackprice.co.in/reset/${token}" style="background-color:#fbca5b; border:1px solid #fbca5b; border-color:#fbca5b; border-radius:0px; border-width:1px; color:#000000; display:inline-block; font-size:14px; font-weight:normal; letter-spacing:0px; line-height:normal; padding:12px 50px 12px 50px; text-align:center; text-decoration:none; border-style:solid; font-family:inherit;" target="_blank">Reset Password</a>
                     </td>
                     </tr>
                   </tbody>
@@ -465,7 +465,7 @@ sendMailObj.sendResetMail = async (receiverMail, name, token) => {
     <div style="font-family: inherit; text-align: inherit"><span style="color: #00634a"><br>
     </span></div>
     <div style="font-family: inherit; text-align: inherit"><span style="color: #00634a">Reach us at <a href="https://www.mayuragarwal.in/#contact" style="border:1px solid transparent; font-size:14px; font-weight:normal; letter-spacing:0px; line-height:normal; padding:12px 20px 12px 20px; text-align:center; text-decoration:none; border-style:solid; font-family:inherit;" target="_blank">www.mayuragarwal.in</a></span></div>
-    <div style="font-family: inherit; text-align: inherit"><span style="color: #00634a">or <br> Email us at <a href="mailto:admin@trackdsa.com" style="border:1px solid transparent; font-size:14px; font-weight:normal; letter-spacing:0px; line-height:normal; padding:12px 20px 12px 26px; text-align:center; text-decoration:none; border-style:solid; font-family:inherit;" target="_blank">admin@trackdsa.com</a> </span></div><div></div></div></td>
+    <div style="font-family: inherit; text-align: inherit"><span style="color: #00634a">or <br> Email us at <a href="mailto:admin@trackprice.co.in" style="border:1px solid transparent; font-size:14px; font-weight:normal; letter-spacing:0px; line-height:normal; padding:12px 20px 12px 26px; text-align:center; text-decoration:none; border-style:solid; font-family:inherit;" target="_blank">admin@trackprice.co.in</a> </span></div><div></div></div></td>
           </tr>
         </tbody>
       </table><table class="module" role="module" data-type="spacer" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="c97177b8-c172-4c4b-b5bd-7604cde23e3f.1.1">
@@ -713,7 +713,7 @@ sendMailObj.sendOtpMail = async (name, receiverMail, token) => {
         <tbody>
           <tr>
             <td style="font-size:6px; line-height:10px; padding:0px 0px 0px 0px;" valign="top" align="center">
-              <img class="max-width" border="0" style="display:block; color:#000000; text-decoration:none; font-family:Helvetica, arial, sans-serif; font-size:16px;" width="29" alt="" data-proportionally-constrained="true" data-responsive="false" src="https://res.cloudinary.com/mayur28/image/upload/v1631346937/logo_yuerkf.png" height="27">
+              <img class="max-width" border="0" style="display:block; color:#000000; text-decoration:none; font-family:Helvetica, arial, sans-serif; font-size:16px;" width="29" alt="" data-proportionally-constrained="true" data-responsive="false" src="https://res.cloudinary.com/mayur28/image/upload/v1680331147/pricetracker-high-resolution-logo-color-on-transparent-background_tmy5iy.png" height="27">
             </td>
           </tr>
         </tbody>
@@ -728,7 +728,7 @@ sendMailObj.sendOtpMail = async (name, receiverMail, token) => {
         <tbody>
           <tr>
             <td style="font-size:6px; line-height:10px; padding:0px 0px 0px 0px;" valign="top" align="center">
-              <span style="font-size: 24px">TrackDSA</span>
+              <span style="font-size: 24px">PriceTracker</span>
             </td>
           </tr>
         </tbody>
@@ -748,7 +748,7 @@ sendMailObj.sendOtpMail = async (name, receiverMail, token) => {
       </table><table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="a10dcb57-ad22-4f4d-b765-1d427dfddb4e" data-mc-module-version="2019-10-22">
         <tbody>
           <tr>
-            <td style="padding:18px 30px 18px 30px; line-height:22px; text-align:inherit; background-color:#ffffff;" height="100%" valign="top" bgcolor="#ffffff" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="font-size: 18px">Please verify your email address to</span><span style="color: #000000; font-size: 18px; font-family: arial, helvetica, sans-serif"> get access to track your favourite DSA problems</span><span style="font-size: 18px">.</span></div>
+            <td style="padding:18px 30px 18px 30px; line-height:22px; text-align:inherit; background-color:#ffffff;" height="100%" valign="top" bgcolor="#ffffff" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="font-size: 18px">Please verify your email address to</span><span style="color: #000000; font-size: 18px; font-family: arial, helvetica, sans-serif"> get access to our free tracking service</span><span style="font-size: 18px">.</span></div>
     <div style="font-family: inherit; text-align: center"><span style="color: #ffbe00; font-size: 18px"><strong>Thank you!</strong></span></div><div></div></div></td>
           </tr>
         </tbody>
@@ -961,8 +961,8 @@ sendMailObj.sendContactMail = async (obj) => {
     <table width="100%" cellpadding="0" cellspacing="0" border="0">
       <tr>
         <td style="padding-right: 0px;padding-left: 0px;" align="center">
-          <a href="https://www.trackdsa.com/" target="_blank">
-          <img align="center" border="0" src="https://res.cloudinary.com/mayur28/image/upload/v1631346937/logo_yuerkf.png" alt="image" title="image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 19%;max-width: 110.2px;" width="110.2" class="v-src-width v-src-max-width"/>
+          <a href="https://www.trackprice.co.in" target="_blank">
+          <img align="center" border="0" src="https://res.cloudinary.com/mayur28/image/upload/v1680331147/pricetracker-high-resolution-logo-color-on-transparent-background_tmy5iy.png" alt="image" title="image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 19%;max-width: 110.2px;" width="110.2" class="v-src-width v-src-max-width"/>
           </a>
         </td>
       </tr>
@@ -1259,8 +1259,8 @@ sendMailObj.sendContactMail = async (obj) => {
     <table width="100%" cellpadding="0" cellspacing="0" border="0">
       <tr>
         <td style="padding-right: 0px;padding-left: 0px;" align="center">
-          <a href="https://www.trackdsa.com/" target="_blank">
-          <img align="center" border="0" src="https://res.cloudinary.com/mayur28/image/upload/v1631346937/logo_yuerkf.png" alt="image" title="image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 19%;max-width: 110.2px;" width="110.2" class="v-src-width v-src-max-width"/>
+          <a href="https://www.trackprice.co.in" target="_blank">
+          <img align="center" border="0" src="https://res.cloudinary.com/mayur28/image/upload/v1680331147/pricetracker-high-resolution-logo-color-on-transparent-background_tmy5iy.png" alt="image" title="image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 19%;max-width: 110.2px;" width="110.2" class="v-src-width v-src-max-width"/>
           </a>
         </td>
       </tr>
