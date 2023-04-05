@@ -39,6 +39,7 @@ const ProductsSchema = mongoose.Schema({
   price: { type: { PriceSchema }, required: [true, "FirstName is required"] },
   url: { type: String, required: [true, "Url is required"] },
   image: { type: String },
+  domain: { type: String },
   badge: { type: String },
   rating: { type: { RatingSchema } },
   alertPrice: { type: Number },
