@@ -11,6 +11,7 @@ const otpObj = require("../middleware/otp");
 const sendMailObj = require("../middleware/sendMail");
 const DeviceDetector = require("node-device-detector");
 const { default: axios } = require("axios");
+const util = require("../utilities/util");
 require("dotenv").config();
 let userService = {};
 
@@ -288,6 +289,22 @@ userService.verifyCaptcha = async (req) => {
 
 userService.addTracker = async (obj) => {
   obj.product.productId = uuidv4();
+  let URL = obj.product.url;
+  let domain = URL.replace(/.+\/\/|www.|\..+/g, "");
+  if (domain != null || domain != undefined || domain != "") {
+    domain = domain.toUpperCase();
+    switch (domain) {
+      case "AMAZON":
+        obj.product.url = util.shortenAmazonURL(URL);
+        break;
+      case "FLIPKART":
+        obj.product.url = util.shortenFlipkartURL(URL);
+        break;
+      default:
+        obj.product.url = URL;
+        break;
+    }
+  }
   return await model.addTracker(obj);
 };
 
