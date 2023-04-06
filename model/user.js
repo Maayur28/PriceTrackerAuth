@@ -290,6 +290,23 @@ userModel.updateTracker = async (userObj) => {
   }
 };
 
+userModel.updateEmailSentPrice = async (userObj) => {
+  const model = await dbModel.getUserConnection();
+  const updated = await model.updateOne(
+    {
+      email: userObj.email,
+      isVerified: true,
+      "products.productId": userObj.productId,
+    },
+    { $set: { "products.$.emailSentPrice": userObj.emailSentPrice } }
+  );
+  if (updated.nModified > 0) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 userModel.removeTracker = async (userObj) => {
   const model = await dbModel.getUserConnection();
   const verifyUserid = await model.findOne({ userid: userObj.userid });
@@ -330,10 +347,7 @@ userModel.removeTracker = async (userObj) => {
 
 userModel.getUsersList = async () => {
   const model = await dbModel.getUserConnection();
-  const usersList = await model.find(
-    {},
-    { email: 1, "products": 1, _id: 0 }
-  );
+  const usersList = await model.find({}, { email: 1, products: 1, _id: 0 });
   return usersList;
 };
 

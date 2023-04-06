@@ -43,6 +43,7 @@ const ProductsSchema = mongoose.Schema({
   badge: { type: String },
   rating: { type: { RatingSchema } },
   alertPrice: { type: Number },
+  emailSentPrice: { type: Number, default: 0 },
 });
 
 const userSchema = mongoose.Schema(

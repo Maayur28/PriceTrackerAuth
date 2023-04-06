@@ -174,6 +174,15 @@ routes.put("/updatetracker", authObj.auth, async (req, res, next) => {
   }
 });
 
+routes.put("/updateEmailSentPrice", async (req, res, next) => {
+  try {
+    let data = await service.updateEmailSentPrice(req.body);
+    res.json({ data: data }).status(200);
+  } catch (error) {
+    next(error);
+  }
+});
+
 routes.put("/deletetracker", authObj.auth, async (req, res, next) => {
   try {
     if (req.access) {

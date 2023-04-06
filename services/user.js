@@ -316,6 +316,10 @@ userService.updateTracker = async (obj) => {
   return await model.updateTracker(obj);
 };
 
+userService.updateEmailSentPrice = async (obj) => {
+  return await model.updateEmailSentPrice(obj);
+};
+
 userService.removeTracker = async (obj) => {
   return await model.removeTracker(obj);
 };
