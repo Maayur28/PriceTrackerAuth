@@ -332,7 +332,7 @@ userModel.getUsersList = async () => {
   const model = await dbModel.getUserConnection();
   const usersList = await model.find(
     {},
-    { email: 1, "products.url": 1, "products.alertPrice": 1, _id: 0 }
+    { email: 1, "products": 1, _id: 0 }
   );
   return usersList;
 };
