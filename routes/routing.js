@@ -224,7 +224,7 @@ routes.get(`/${process.env.NOTIFICATION_ROUTE}`, async (req, res, next) => {
   }
 });
 
-routes.get(`/getNotification`, authObj.auth, async (req, res, next) => {
+routes.post(`/getNotification`, authObj.auth, async (req, res, next) => {
   try {
     if (req.access) {
       let data = await service.getNotifications(req.userid);
