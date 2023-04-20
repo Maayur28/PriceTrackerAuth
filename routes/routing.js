@@ -215,4 +215,13 @@ routes.get(`/${process.env.USERS_ROUTE}`, async (req, res, next) => {
   }
 });
 
+routes.get(`/${process.env.NOTIFICATION_ROUTE}`, async (req, res, next) => {
+  try {
+    let data = await service.processNotify();
+    res.json({ data: data }).status(200);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = routes;

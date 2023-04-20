@@ -361,4 +361,30 @@ userModel.getUsersList = async () => {
   return usersList;
 };
 
+userModel.addNotifyData = async (email, notifyData) => {
+  const model = await dbModel.getUserConnection();
+  const verifyEmail = await model.findOne({ email: email });
+  if (verifyEmail) {
+    const added = await model.updateOne(
+      { email: email, isVerified: true },
+      {
+        $push: {
+          notification: {
+            $each: notifyData,
+            $position: 0,
+          },
+        },
+      }
+    );
+    if (added.nModified > 0) {
+      return true;
+    } else {
+      let err = new Error();
+      err.status = 500;
+      err.message = "Server is busy!Please try again later";
+      throw err;
+    }
+  }
+};
+
 module.exports = userModel;

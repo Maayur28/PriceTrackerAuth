@@ -328,4 +328,35 @@ userService.getUsersList = async () => {
   return await model.getUsersList();
 };
 
+userService.processNotify = async () => {
+  try {
+    let data = await model.getUsersList();
+    for (const users of data) {
+      let urlList = util.getUrlsList(users.products);
+      const response = await axios.post(
+        `${process.env.PROD_DOMAIN}/getPriceHistoryUrls`,
+        { urls: urlList },
+        {
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        }
+      );
+      if (
+        response.status == 200 &&
+        response.data != null &&
+        response.data != undefined &&
+        response.data.data != null &&
+        response.data.data != undefined
+      ) {
+        let notifyData = util.getNotifyData(users.products, response.data.data);
+        await model.addNotifyData(users.email, notifyData);
+      }
+      return "success";
+    }
+  } catch (error) {
+    console.log("notifyFailed");
+  }
+};
+
 module.exports = userService;

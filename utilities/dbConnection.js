@@ -22,6 +22,14 @@ const PriceSchema = mongoose.Schema({
   },
 });
 
+const NotificationSchema = mongoose.Schema({
+  title: { type: String, required: [true, "Title is required"] },
+  price: { type: { PriceSchema }, required: [true, "Price is required"] },
+  url: { type: String, required: [true, "Url is required"] },
+  image: { type: String, required: [true, "Image is required"] },
+  date: { type: String, required: [true, "Date is required"] },
+});
+
 const RatingSchema = mongoose.Schema({
   ratingCount: {
     type: String,
@@ -79,6 +87,7 @@ const userSchema = mongoose.Schema(
     },
     otp: { type: Number },
     products: [ProductsSchema],
+    notification: [NotificationSchema],
     secret: { type: String },
   },
   { timestamps: true }
