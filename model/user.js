@@ -234,6 +234,15 @@ userModel.addTracker = async (userObj) => {
 userModel.getTracker = async (userid) => {
   const model = await dbModel.getUserConnection();
   const data = await model.findOne({ userid: userid }, { products: 1, _id: 0 });
+  if (
+    data != null &&
+    data != undefined &&
+    data.products != null &&
+    data.products != undefined &&
+    data.products.length > 1
+  ) {
+    data.products = data.products.reverse();
+  }
   return data;
 };
 
