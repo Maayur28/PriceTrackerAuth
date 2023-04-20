@@ -398,12 +398,7 @@ userModel.getNotifications = async (userid) => {
 
 userModel.dismissNotifications = async (userid) => {
   const model = await dbModel.getUserConnection();
-  await model.update(
-    { userid: userid },
-    { $pull: { notification: {} } },
-    false,
-    true
-  );
+  await model.update({ userid: userid }, { $pull: { notification: {} } });
   return true;
 };
 
