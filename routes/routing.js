@@ -224,4 +224,17 @@ routes.get(`/${process.env.NOTIFICATION_ROUTE}`, async (req, res, next) => {
   }
 });
 
+routes.get(`/getNotification`, authObj.auth, async (req, res, next) => {
+  try {
+    if (req.access) {
+      let data = await service.getNotifications(req.userid);
+      res.json({ notification: data.notification }).status(200);
+    } else {
+      res.json({ accessToken: false }).status(400);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = routes;

@@ -359,4 +359,8 @@ userService.processNotify = async () => {
   }
 };
 
+userService.getNotifications = async (userId) => {
+  return await model.getNotifications(userId);
+};
+
 module.exports = userService;

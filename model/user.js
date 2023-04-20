@@ -387,4 +387,13 @@ userModel.addNotifyData = async (email, notifyData) => {
   }
 };
 
+userModel.getNotifications = async (userid) => {
+  const model = await dbModel.getUserConnection();
+  const notification = await model.findOne(
+    { userid: userid },
+    { notification: 1, _id: 0 }
+  );
+  return notification;
+};
+
 module.exports = userModel;
