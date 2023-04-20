@@ -363,4 +363,8 @@ userService.getNotifications = async (userId) => {
   return await model.getNotifications(userId);
 };
 
+userService.dismissNotifications = async (userId) => {
+  return await model.dismissNotifications(userId);
+};
+
 module.exports = userService;

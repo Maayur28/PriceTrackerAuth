@@ -237,4 +237,17 @@ routes.post(`/getNotification`, authObj.auth, async (req, res, next) => {
   }
 });
 
+routes.post(`/dismissNotification`, authObj.auth, async (req, res, next) => {
+  try {
+    if (req.access) {
+      let data = await service.dismissNotifications(req.userid);
+      res.json({ success: data }).status(200);
+    } else {
+      res.json({ accessToken: false }).status(400);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = routes;

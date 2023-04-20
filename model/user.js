@@ -396,4 +396,15 @@ userModel.getNotifications = async (userid) => {
   return notification;
 };
 
+userModel.dismissNotifications = async (userid) => {
+  const model = await dbModel.getUserConnection();
+  await model.update(
+    { userid: userid },
+    { $pull: { notification: {} } },
+    false,
+    true
+  );
+  return true;
+};
+
 module.exports = userModel;
