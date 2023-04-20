@@ -147,8 +147,9 @@ routes.post("/addtracker", authObj.auth, async (req, res, next) => {
 routes.post("/gettracker", authObj.auth, async (req, res, next) => {
   try {
     if (req.access) {
-      let data = await service.getTracker(req.userid);
-      res.json({ data: data.products }).status(200);
+      const { page = 1, limit = 5 } = req.query;
+      let data = await service.getTracker(req.userid, page, limit);
+      res.json({ data: data }).status(200);
     } else {
       res.json({ accessToken: false }).status(400);
     }

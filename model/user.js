@@ -231,9 +231,12 @@ userModel.addTracker = async (userObj) => {
   }
 };
 
-userModel.getTracker = async (userid) => {
+userModel.getTracker = async (userid, page, limit) => {
   const model = await dbModel.getUserConnection();
   const data = await model.findOne({ userid: userid }, { products: 1, _id: 0 });
+  let start = (parseInt(page) - 1) * parseInt(limit),
+    end = parseInt(limit) + start;
+  let obj = {};
   if (
     data != null &&
     data != undefined &&
@@ -242,8 +245,12 @@ userModel.getTracker = async (userid) => {
     data.products.length > 1
   ) {
     data.products = data.products.reverse();
+    obj.total = data.products.length;
+    obj.currentPage = page;
+    obj.limit = limit;
+    obj.products = data.products.slice(start, end);
   }
-  return data;
+  return obj;
 };
 
 const checkIfTrackerExists = (productArray, productId) => {

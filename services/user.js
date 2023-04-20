@@ -308,8 +308,8 @@ userService.addTracker = async (obj) => {
   return await model.addTracker(obj);
 };
 
-userService.getTracker = async (userid) => {
-  return await model.getTracker(userid);
+userService.getTracker = async (userid, page, limit) => {
+  return await model.getTracker(userid, page, limit);
 };
 
 userService.updateTracker = async (obj) => {
