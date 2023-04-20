@@ -312,16 +312,16 @@ userService.getTracker = async (userid, page, limit) => {
   return await model.getTracker(userid, page, limit);
 };
 
-userService.updateTracker = async (obj) => {
-  return await model.updateTracker(obj);
+userService.updateTracker = async (obj, page, limit) => {
+  return await model.updateTracker(obj, page, limit);
 };
 
 userService.updateEmailSentPrice = async (obj) => {
   return await model.updateEmailSentPrice(obj);
 };
 
-userService.removeTracker = async (obj) => {
-  return await model.removeTracker(obj);
+userService.removeTracker = async (obj, page, limit) => {
+  return await model.removeTracker(obj, page, limit);
 };
 
 userService.getUsersList = async () => {

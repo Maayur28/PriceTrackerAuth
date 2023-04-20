@@ -165,8 +165,9 @@ routes.put("/updatetracker", authObj.auth, async (req, res, next) => {
       userObj.userid = req.userid;
       userObj.productId = req.body.productId;
       userObj.alertPrice = req.body.alertPrice;
-      let data = await service.updateTracker(userObj);
-      res.json({ data: data.products }).status(200);
+      const { page = 1, limit = 5 } = req.query;
+      let data = await service.updateTracker(userObj, page, limit);
+      res.json({ data: data }).status(200);
     } else {
       res.json({ accessToken: false }).status(400);
     }
@@ -190,8 +191,9 @@ routes.put("/deletetracker", authObj.auth, async (req, res, next) => {
       let userObj = {};
       userObj.userid = req.userid;
       userObj.productId = req.body.productId;
-      let data = await service.removeTracker(userObj);
-      res.json({ data: data.products }).status(200);
+      const { page = 1, limit = 5 } = req.query;
+      let data = await service.removeTracker(userObj, page, limit);
+      res.json({ data: data }).status(200);
     } else {
       res.json({ accessToken: false }).status(400);
     }

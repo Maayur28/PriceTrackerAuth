@@ -271,7 +271,7 @@ const checkIfTrackerExists = (productArray, productId) => {
   }
 };
 
-userModel.updateTracker = async (userObj) => {
+userModel.updateTracker = async (userObj, page, limit) => {
   const model = await dbModel.getUserConnection();
   const verifyUserid = await model.findOne({ userid: userObj.userid });
   const alreadyExists = checkIfTrackerExists(
@@ -288,10 +288,7 @@ userModel.updateTracker = async (userObj) => {
       { $set: { "products.$.alertPrice": userObj.alertPrice } }
     );
     if (added.nModified > 0) {
-      return await model.findOne(
-        { userid: userObj.userid },
-        { products: 1, _id: 0 }
-      );
+      return await userModel.getTracker(userObj.userid, page, limit);
     } else {
       let err = new Error();
       err.status = 500;
@@ -323,7 +320,7 @@ userModel.updateEmailSentPrice = async (userObj) => {
   }
 };
 
-userModel.removeTracker = async (userObj) => {
+userModel.removeTracker = async (userObj, page, limit) => {
   const model = await dbModel.getUserConnection();
   const verifyUserid = await model.findOne({ userid: userObj.userid });
   const alreadyExists = checkIfTrackerExists(
@@ -343,10 +340,7 @@ userModel.removeTracker = async (userObj) => {
       }
     );
     if (deleted.nModified > 0) {
-      return await model.findOne(
-        { userid: userObj.userid },
-        { products: 1, _id: 0 }
-      );
+      return await userModel.getTracker(userObj.userid, page, limit);
     } else {
       let err = new Error();
       err.status = 500;
