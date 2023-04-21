@@ -231,12 +231,9 @@ userModel.addTracker = async (userObj) => {
   }
 };
 
-userModel.getTracker = async (userid, page, limit) => {
+userModel.getTracker = async (userid) => {
   const model = await dbModel.getUserConnection();
-  const data = await model.findOne({ userid: userid }, { products: 1, _id: 0 });
-  let start = (parseInt(page) - 1) * parseInt(limit),
-    end = parseInt(limit) + start;
-  let obj = {};
+  let data = await model.findOne({ userid: userid }, { products: 1, _id: 0 });
   if (
     data != null &&
     data != undefined &&
@@ -245,12 +242,8 @@ userModel.getTracker = async (userid, page, limit) => {
     data.products.length > 1
   ) {
     data.products = data.products.reverse();
-    obj.total = data.products.length;
-    obj.currentPage = page;
-    obj.limit = limit;
-    obj.products = data.products.slice(start, end);
   }
-  return obj;
+  return data;
 };
 
 const checkIfTrackerExists = (productArray, productId) => {
@@ -288,7 +281,7 @@ userModel.updateTracker = async (userObj, page, limit) => {
       { $set: { "products.$.alertPrice": userObj.alertPrice } }
     );
     if (added.nModified > 0) {
-      return await userModel.getTracker(userObj.userid, page, limit);
+      return await userModel.getTracker(userObj.userid);
     } else {
       let err = new Error();
       err.status = 500;
@@ -340,7 +333,7 @@ userModel.removeTracker = async (userObj, page, limit) => {
       }
     );
     if (deleted.nModified > 0) {
-      return await userModel.getTracker(userObj.userid, page, limit);
+      return await userModel.getTracker(userObj.userid);
     } else {
       let err = new Error();
       err.status = 500;
