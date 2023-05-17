@@ -212,39 +212,4 @@ routes.get(`/${process.env.USERS_ROUTE}`, async (req, res, next) => {
   }
 });
 
-routes.get(`/${process.env.NOTIFICATION_ROUTE}`, async (req, res, next) => {
-  try {
-    let data = await service.processNotify();
-    res.json({ data: data }).status(200);
-  } catch (error) {
-    next(error);
-  }
-});
-
-routes.post(`/getNotification`, authObj.auth, async (req, res, next) => {
-  try {
-    if (req.access) {
-      let data = await service.getNotifications(req.userid);
-      res.json({ notification: data.notification }).status(200);
-    } else {
-      res.json({ accessToken: false }).status(400);
-    }
-  } catch (error) {
-    next(error);
-  }
-});
-
-routes.post(`/dismissNotification`, authObj.auth, async (req, res, next) => {
-  try {
-    if (req.access) {
-      let data = await service.dismissNotifications(req.userid);
-      res.json({ success: data }).status(200);
-    } else {
-      res.json({ accessToken: false }).status(400);
-    }
-  } catch (error) {
-    next(error);
-  }
-});
-
 module.exports = routes;
